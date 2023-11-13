@@ -1,0 +1,209 @@
+:root {
+    --font-fam: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Structure */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: indianred
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    background-color: darkslategray;
+    border: 1px solid white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/*.headerrr {
+    font-size: 20px;
+    text-align: center;
+}
+
+.details-headerrr {
+    text-align: center;
+    padding: 3px;
+}*/
+
+.game {
+    padding: 10px;
+    margin: 10px;
+    background: grey;
+    border-radius: 5px;
+}
+
+.game:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+    background: white;
+}
+
+img {
+    border: 5px solid red;
+    height:300px;
+    width: 250px;
+    display: block;
+    margin: auto;
+}
+
+.intro-img {
+    width: 200px;
+    height: 250px;
+}
+
+#game-details-column {
+    padding: 10px;
+    margin: 10px;
+    background: lightyellow;
+    border-radius: 5px;
+    height: 700px;
+}
+
+#add-link {
+    font-size: 1.5em;
+    border: 1px solid crimson;
+}
+
+#edit-link {
+    float: right;
+    margin-right: 10px;
+}
+
+#delete-link {
+    float: right;
+}
+
+#add-edit-game-container {
+    padding: 10px;
+    margin: 10px;
+    background: lightblue;
+    border-radius: 10px;
+}
+
+
+/* Form */
+
+label {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+#game-info input {
+    margin-top: 5px;
+}
+
+#add-info {
+    color: blue;
+    font-size: 15px;
+    text-align: right;
+}
+
+
+/* Modal Dialog */
+
+#modal-background {
+    /*position: fixed;*/
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    /*overflow: scroll;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.dialog {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+}
+
+.dialog img {
+    max-width: fit-content;
+    display: block;
+    padding: 30px 5px 30px 30px;
+    margin: auto;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Typography */
+
+#main-nav-items {
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-family: var(--font-fam);
+}
+
+.hidden {
+    display: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+
+/* Larger Resolutions */
+
+@media (min-width: 600px) {
+    .columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .two-columns div {
+        flex: 1;
+        display: block;
+    }
+    .game {
+        width: 35%;
+    }
+    #add-edit-game-container {
+        max-width: 30%;
+        margin: auto;
+    }
+}

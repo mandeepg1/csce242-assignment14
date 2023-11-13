@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <title>Assignment 14</title>
+</head>
+
+<body>
+    <header>
+        <h1>Video Games</h1>
+        <h2 class="headerrr"><a href="#" id="add-game-link">Add Game</a></h2>
+    </header>
+
+    <div id="add-edit-game-container" class="dialog transparent">
+        <span class="close">&times;</span>
+
+        <h3 id="add-edit-title">Game</h3>
+        <form id="add-edit-game-form" method="post">
+            <input type="hidden" name="_id" value="-1" />
+            <p>
+                <label for="name">Game Name:</label>
+                <input type="text" id="name" name="name" required />
+            </p>
+            <p>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required />
+            </p>
+
+            <p>
+                <label for="img">Upload Image:</label>
+                <input type="file" id="img" name="img" />
+            </p>
+            <div id="game-info">
+                <label class="inline">Game Information:</label>
+                <a href="#" id="add-info">Add Info</a>
+                <ul id="info-boxes"></ul>
+            </div>
+                 
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="columns two-columns">
+        <div id="game-list" class="columns"></div>
+        <div id="game-details-column">
+            <h2 class="details-headerrr">Details</h2>
+            <div id="vgame-details"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>
