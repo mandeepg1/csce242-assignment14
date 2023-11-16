@@ -10,101 +10,100 @@ app.use(cors());
 const upload = multer({ dest: __dirname + "/public/images" });
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/index.html");
 });
 
-let games = [{
-        _id: 1,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Interactive Entertainment",
-        rating: 4,
-        description: "God of War (2018) is a critically acclaimed action-adventure video game that follows Kratos, a former Greek god, and his son Atreus as they embark on a deeply emotional journey through the realms of Norse mythology, featuring stunning visuals, intense combat, and a compelling father-son narrative.",
-        img: "images/god-of-war.jpg",
-    },
-    {
-        _id: 2,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Interactive Company",
-        rating: 4,
-        description: "Extra soft and bannanny",
-        img: "images/god-of-war.jpg",
-    },
-    {
-        _id: 3,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Entertainment Company",
-        rating: 4,
-        description: "Extra soft and bannanny",
-        img: "images/god-of-war.jpg",
-    },
-    {
-        _id: 4,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Entertainment Company",
-        rating: 4,
-        description: "Extra soft and bannanny",
-        img: "images/god-of-war.jpg",
-    },
-    {
-        _id: 5,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Entertainment Company",
-        rating: 4,
-        description: "Extra soft and bannanny",
-        img: "images/god-of-war.jpg",
-    },
-    {
-        _id: 6,
-        name: "God of War",
-        platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
-        publisher: "Sony Entertainment Company",
-        rating: 4,
-        description: "Extra soft and bannanny",
-        img: "images/god-of-war.jpg",
-    },
+let games = [
+  {
+    _id: 1,
+    name: "God of War",
+    platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
+    publisher: "Sony Interactive Entertainment",
+    description:
+      "God of War (2018) is a critically acclaimed action-adventure video game that follows Kratos, a former Greek god, and his son Atreus as they embark on a deeply emotional journey through the realms of Norse mythology, featuring stunning visuals, intense combat, and a compelling father-son narrative.",
+    img: "images/god-of-war.jpg",
+  },
+  {
+    _id: 2,
+    name: "Spider-Man 2",
+    platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
+    publisher: "Sony Interactive Entertainment",
+    description: "The console version of Spider-Man 2 is a third-person action-adventure video game, set in an open world based on New York City and composed of Manhattan, Roosevelt Island, Ellis Island, and Liberty Island. Players take on the role of Spider-Man and complete missions—linear scenarios with set objectives—to progress through the story.",
+    img: "images/spider-man.jpg",
+  },
+  {
+    _id: 3,
+    name: "Madden 24",
+    platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
+    publisher: "EA Sports",
+    description:"Madden NFL 24 is an American football video game developed by EA Tiburon and published by EA Sports. Based on the National Football League (NFL), it is an installment in the Madden NFL series and follows Madden NFL 23. Buffalo Bills quarterback Josh Allen is the cover athlete for the game.",
+    img: "images/madden-24.jpg",
+  },
+  {
+    _id: 4,
+    name: "Overwatch 2",
+    platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
+    publisher: "Blizzard Entertainment",
+    description:"Overwatch 2 is a 2022 first-person shooter game developed and published by Blizzard Entertainment. As a sequel and replacement to the 2016 hero shooter Overwatch, the game intends a shared environment for player-versus-player (PvP) modes while initially having plans for introducing persistent cooperative modes, though the plans were later scrapped in 2023, focusing the game on its PvP elements.",
+    img: "images/ow2.jpg",
+  },
+  {
+    _id: 5,
+    name: "Call of Duty: Modern Warfare 2019",
+    platform: ["PS4", "PS5", "XBOX One", "PC", "Steam"],
+    publisher: "Activision",
+    description: "Call of Duty: Modern Warfare is a 2019 first-person shooter video game developed by Infinity Ward and published by Activision. Serving as the sixteenth overall installment in the Call of Duty series, as well as a reboot of the Modern Warfare sub-series, it was released on October 25, 2019, for PlayStation 4, Windows, and Xbox One.",
+    img: "images/mw2019.jpg",
+  },
+  {
+    _id: 6,
+    name: "Starcraft 2",
+    platform: ["BattleNet", "PC", "Steam"],
+    publisher: "Blizzard Entertainment",
+    description: "StarCraft II is a military science fiction video game created by Blizzard Entertainment as a sequel to the successful StarCraft video game released in 1998. Set in a fictional future, the game centers on a galactic struggle for dominance among the various fictional races of StarCraft.",
+    img: "images/starcraft2.jpg",
+  },
 ];
 
 app.get("/api/games", (req, res) => {
-    res.send(games);
+  res.send(games);
 });
-
-app.post("/api/games", upload.single("img"), (req, res) => {
-    const result = validateGame(req.body);
-
-    if (result.error) {
-        res.status(400).send(result.error.details[0].message);
-        return;
-    }
-
-    const game = {
-        _id: games.length + 1,
-        name: req.body.name,
-        description: req.body.description,
-        ingredients: req.body.ingredients.split(",")
-    }
-
-    games.push(game);
-    res.send(games);
-});
-
-const validateGame = (game) => {
-    const schema = Joi.object({
-        _id: Joi.allow(""),
-        platform: Joi.allow(""),
-        publisher: Joi.allow(""),
-        rating: Joi.allow(""),
-        name: Joi.string().min(3).required(),
-        description: Joi.string().min(3).required()
-    });
-
-    return schema.validate(game);
-};
 
 app.listen(3000, () => {
-    console.log("listening");
-})
+  console.log("listening");
+});
+
+const validateThings = (game) => {
+  const schema = Joi.object({
+    _id: Joi.allow(""),
+    platform: Joi.allow(""),
+    publisher: Joi.allow(""),
+    name: Joi.string().min(1).required(),
+    description: Joi.string().min(3).required(),
+  });
+  return schema.validate(game);
+};
+
+app.post("/api/games", upload.single("img"), (req, res) => {
+  console.log("in post");
+  const result = validateThings(req.body);
+
+  if (result.error) {
+    res.status(400).send(result.error.details[0].message);
+    return;
+  }
+
+  console.log(req.body);
+  const game = {
+    _id: games.length + 1,
+    name: req.body.name,
+    description: req.body.description,
+    platform: req.body.platform,
+    publisher: req.body.publisher,
+    img: req.body.img
+  };
+
+  games.push(game);
+
+  res.send(game);
+});
